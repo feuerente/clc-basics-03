@@ -13,6 +13,9 @@ public class Graph : MonoBehaviour {
     [SerializeField, Range(0f, 2f)]
     float animationSpeed = 0.5f;
 
+    [SerializeField]
+    FunctionLibrary.FunctionName function = default;
+
     Transform[] points;
 
     void Awake() {
@@ -33,9 +36,10 @@ public class Graph : MonoBehaviour {
     void Update() {
         float time = Time.time;
         for (int i = 0; i < points.Length; i++) {
+            FunctionLibrary.Function f = FunctionLibrary.GetFunction(function);
             Transform point = points[i];
             Vector3 position = point.localPosition;
-            position.y = Mathf.Sin(Mathf.PI * (position.x + (time * animationSpeed)));
+            position.y = f(position.x, time * animationSpeed);
             point.localPosition = position;
         }
     }
