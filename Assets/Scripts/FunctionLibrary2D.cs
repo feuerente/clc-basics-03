@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using static UnityEngine.Mathf;
 
-public static class FunctionLibrary {
+public static class FunctionLibrary2D {
 
     public delegate float Function(float x, float t);
 

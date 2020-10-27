@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Graph : MonoBehaviour {
+public class Graph2D : MonoBehaviour {
 
     [SerializeField]
     Transform pointPrefab = default;
@@ -14,7 +14,7 @@ public class Graph : MonoBehaviour {
     float animationSpeed = 0.5f;
 
     [SerializeField]
-    FunctionLibrary.FunctionName function = default;
+    FunctionLibrary2D.FunctionName function = default;
 
     Transform[] points;
 
@@ -36,7 +36,7 @@ public class Graph : MonoBehaviour {
     void Update() {
         float time = Time.time;
         for (int i = 0; i < points.Length; i++) {
-            FunctionLibrary.Function f = FunctionLibrary.GetFunction(function);
+            FunctionLibrary2D.Function f = FunctionLibrary2D.GetFunction(function);
             Transform point = points[i];
             Vector3 position = point.localPosition;
             position.y = f(position.x, time * animationSpeed);
